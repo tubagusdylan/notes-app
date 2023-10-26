@@ -1,0 +1,12 @@
+.header-container {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f8f7f7;
+}
+
+.header-container h1 {
+  color: #fab515;
+  text-align: center;
+}

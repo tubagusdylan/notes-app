@@ -1,11 +1,16 @@
 import React from "react";
+import Header from "./components/Header";
+import SearchNotes from "./components/SearchNotes";
+import AddNotes from "./components/AddNotes";
 
 class NotesApp extends React.Component {
   render() {
     return (
-      <>
-        <h1>Halo Dunia</h1>
-      </>
+      <div className="background">
+        <Header />
+        <SearchNotes />
+        <AddNotes />
+      </div>
     );
   }
 }
