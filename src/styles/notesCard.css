@@ -1,0 +1,45 @@
+.notes-card {
+  width: calc(25% - 10px);
+  padding: 10px 15px;
+  border: 2px solid #fab515;
+  border-radius: 20px;
+}
+
+.notes-card-title {
+  margin-bottom: 6px;
+}
+
+.notes-timestamp {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.notes-description {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.btn-notes-card {
+  width: calc(50% - 10px);
+  margin-right: 10px;
+  padding: 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+.btn-notes-card:hover {
+  background-color: #c5c5c5;
+  opacity: 1;
+}
+
+.fa-bookmark {
+  color: blue;
+}
+
+.fa-trash {
+  color: red;
+}
