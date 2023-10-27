@@ -12,7 +12,26 @@ class NotesContainer extends React.Component {
       <div className="container">
         <h2>{this.props.title}</h2>
         <div className="notes-wrap">
-          <NotesCard />
+          {this.props.notes.length > 0 ? (
+            this.props.notes.map((note, index) => {
+              return (
+                <NotesCard
+                  key={index}
+                  id={note.id}
+                  title={note.title}
+                  body={note.body}
+                  createdAt={note.createdAt}
+                  archived={note.archived}
+                  propsArchived={this.props.archived}
+                  onDeleteNotes={this.props.onDeleteNotes}
+                  onArchivedNotes={this.props.onArchivedNotes}
+                  onActivedNotes={this.props.onActivedNotes}
+                />
+              );
+            })
+          ) : (
+            <p>TIdak ada catatan</p>
+          )}
         </div>
       </div>
     );
