@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import "../styles/notesCard.css";
+import { showFormattedDate } from "../utils/index.js";
 
 class NotesCard extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class NotesCard extends React.Component {
     return (
       <div className="notes-card">
         <h3 className="notes-card-title">{this.props.title}</h3>
-        <span className="notes-timestamp">{this.props.createdAt}</span>
+        <span className="notes-timestamp">{showFormattedDate(this.props.createdAt)}</span>
         <p className="notes-description">{this.props.body}</p>
         <div className="btn-wrap">
           <button className="btn-notes-card" onClick={!this.props.propsArchived ? this.onArchiveButtonClick : this.onActiveButtonClick}>

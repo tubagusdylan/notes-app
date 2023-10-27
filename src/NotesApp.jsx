@@ -3,15 +3,16 @@ import Header from "./components/Header";
 import SearchNotes from "./components/SearchNotes";
 import AddNotes from "./components/AddNotes";
 import NotesContainer from "./components/NotesContainer";
+import { getInitialData } from "./utils/index.js";
 
 class NotesApp extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      notes: [],
+      notes: getInitialData(),
       archiveCount: 0,
-      activeCount: 0,
+      activeCount: getInitialData().length,
       searchText: "",
     };
 
@@ -28,7 +29,7 @@ class NotesApp extends React.Component {
       title: title,
       body: description,
       archived: false,
-      createdAt: new Date().toLocaleDateString("id"),
+      createdAt: new Date().toISOString(),
     };
 
     this.setState((prev) => {
