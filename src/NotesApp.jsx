@@ -10,6 +10,8 @@ class NotesApp extends React.Component {
 
     this.state = {
       notes: [],
+      archiveCount: 0,
+      activeCount: 0,
     };
 
     this.onAddNotesHandler = this.onAddNotesHandler.bind(this);
@@ -30,6 +32,7 @@ class NotesApp extends React.Component {
     this.setState((prev) => {
       return {
         notes: [...prev.notes, newNotes],
+        activeCount: prev.activeCount + 1,
       };
     });
   }
@@ -39,12 +42,21 @@ class NotesApp extends React.Component {
       return note.id === id;
     });
 
+    const status = this.state.notes[index].archived;
     this.state.notes.splice(index, 1);
 
     this.setState((prev) => {
-      return {
-        notes: prev.notes,
-      };
+      if (status) {
+        return {
+          notes: prev.notes,
+          archiveCount: prev.archiveCount - 1,
+        };
+      } else {
+        return {
+          notes: prev.notes,
+          activeCount: prev.activeCount - 1,
+        };
+      }
     });
   }
 
@@ -63,6 +75,8 @@ class NotesApp extends React.Component {
 
       return {
         notes: prev.notes,
+        archiveCount: prev.archiveCount + 1,
+        activeCount: prev.activeCount - 1,
       };
     });
   }
@@ -82,6 +96,8 @@ class NotesApp extends React.Component {
 
       return {
         notes: prev.notes,
+        archiveCount: prev.archiveCount - 1,
+        activeCount: prev.activeCount + 1,
       };
     });
   }
@@ -92,8 +108,8 @@ class NotesApp extends React.Component {
         <Header />
         <SearchNotes />
         <AddNotes onAddNotes={this.onAddNotesHandler} />
-        <NotesContainer title={"Catatan Aktif"} notes={this.state.notes} archived={false} onDeleteNotes={this.onDeleteNotesHandler} onArchivedNotes={this.onArchivedNotesHandler} />
-        <NotesContainer title={"Arsip"} notes={this.state.notes} archived={true} onDeleteNotes={this.onDeleteNotesHandler} onActivedNotes={this.onActivedNotesHandler} />
+        <NotesContainer title={"Catatan Aktif"} notes={this.state.notes} archived={false} onDeleteNotes={this.onDeleteNotesHandler} onArchivedNotes={this.onArchivedNotesHandler} statusCount={this.state.activeCount} />
+        <NotesContainer title={"Arsip"} notes={this.state.notes} archived={true} onDeleteNotes={this.onDeleteNotesHandler} onActivedNotes={this.onActivedNotesHandler} statusCount={this.state.archiveCount} />
       </div>
     );
   }
