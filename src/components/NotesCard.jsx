@@ -29,12 +29,14 @@ class NotesCard extends React.Component {
         <h3 className="notes-card-title">{this.props.title}</h3>
         <span className="notes-timestamp">{this.props.createdAt}</span>
         <p className="notes-description">{this.props.body}</p>
-        <button className="btn-notes-card" onClick={!this.props.propsArchived ? this.onArchiveButtonClick : this.onActiveButtonClick}>
-          {this.props.propsArchived ? <i className="fa-solid fa-rotate-left"></i> : <i className="fa-solid fa-bookmark"></i>}
-        </button>
-        <button className="btn-notes-card" onClick={this.onDeleteButtonClick}>
-          <i className="fa-solid fa-trash"></i>
-        </button>
+        <div className="btn-wrap">
+          <button className="btn-notes-card" onClick={!this.props.propsArchived ? this.onArchiveButtonClick : this.onActiveButtonClick}>
+            {this.props.propsArchived ? <i className="fa-solid fa-rotate-left"></i> : <i className="fa-solid fa-bookmark"></i>}
+          </button>
+          <button className="btn-notes-card" onClick={this.onDeleteButtonClick}>
+            <i className="fa-solid fa-trash"></i>
+          </button>
+        </div>
       </div>
     );
   }

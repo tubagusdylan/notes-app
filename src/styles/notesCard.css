@@ -3,6 +3,7 @@
   padding: 10px 15px;
   border: 2px solid #fab515;
   border-radius: 20px;
+  position: relative;
 }
 
 .notes-card-title {
@@ -17,9 +18,18 @@
 }
 
 .notes-description {
+  width: 100%;
   font-size: 15px;
-  margin-bottom: 6px;
-  line-height: 22px;
+  margin-bottom: 3rem;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+
+.btn-wrap {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
 }
 
 .btn-notes-card {
