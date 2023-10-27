@@ -12,12 +12,14 @@ class NotesApp extends React.Component {
       notes: [],
       archiveCount: 0,
       activeCount: 0,
+      searchText: "",
     };
 
     this.onAddNotesHandler = this.onAddNotesHandler.bind(this);
     this.onDeleteNotesHandler = this.onDeleteNotesHandler.bind(this);
     this.onArchivedNotesHandler = this.onArchivedNotesHandler.bind(this);
     this.onActivedNotesHandler = this.onActivedNotesHandler.bind(this);
+    this.onSearchTextHandler = this.onSearchTextHandler.bind(this);
   }
 
   onAddNotesHandler({ title, description }) {
@@ -102,14 +104,38 @@ class NotesApp extends React.Component {
     });
   }
 
+  onSearchTextHandler(text) {
+    this.setState(() => {
+      return {
+        searchText: text,
+      };
+    });
+  }
+
   render() {
     return (
       <div className="background">
         <Header />
-        <SearchNotes />
+        <SearchNotes onSearchText={this.onSearchTextHandler} searchText={this.state.searchText} />
         <AddNotes onAddNotes={this.onAddNotesHandler} />
-        <NotesContainer title={"Catatan Aktif"} notes={this.state.notes} archived={false} onDeleteNotes={this.onDeleteNotesHandler} onArchivedNotes={this.onArchivedNotesHandler} statusCount={this.state.activeCount} />
-        <NotesContainer title={"Arsip"} notes={this.state.notes} archived={true} onDeleteNotes={this.onDeleteNotesHandler} onActivedNotes={this.onActivedNotesHandler} statusCount={this.state.archiveCount} />
+        <NotesContainer
+          title={"Catatan Aktif"}
+          notes={this.state.notes}
+          archived={false}
+          onDeleteNotes={this.onDeleteNotesHandler}
+          onArchivedNotes={this.onArchivedNotesHandler}
+          statusCount={this.state.activeCount}
+          searchText={this.state.searchText}
+        />
+        <NotesContainer
+          title={"Arsip"}
+          notes={this.state.notes}
+          archived={true}
+          onDeleteNotes={this.onDeleteNotesHandler}
+          onActivedNotes={this.onActivedNotesHandler}
+          statusCount={this.state.archiveCount}
+          searchText={this.state.searchText}
+        />
       </div>
     );
   }

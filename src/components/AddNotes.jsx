@@ -61,8 +61,8 @@ class AddNotes extends React.Component {
         <h2>Buat Catatan</h2>
         <span>Sisa Karakter: {this.state.maxTitleChar}</span>
         <form onSubmit={this.onSubmitHandler}>
-          <input type="text" placeholder="Judul Catatan" className="title-input" value={this.state.title} onChange={this.onChangeTitle} />
-          <textarea className="description-input" placeholder="Isi Catatan" value={this.state.description} onChange={this.onChangeDescription}></textarea>
+          <input type="text" placeholder="Judul Catatan" className="title-input" value={this.state.title} onChange={this.onChangeTitle} required />
+          <textarea className="description-input" placeholder="Isi Catatan" value={this.state.description} onChange={this.onChangeDescription} required></textarea>
           <button className="btn-add">Tambah Catatan</button>
         </form>
       </div>

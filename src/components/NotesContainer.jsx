@@ -15,7 +15,8 @@ class NotesContainer extends React.Component {
           {this.props.notes.length > 0 && this.props.statusCount > 0 ? (
             this.props.notes.map((note, index) => {
               return (
-                this.props.archived === note.archived && (
+                this.props.archived === note.archived &&
+                note.title.toLowerCase().includes(this.props.searchText.toLowerCase()) && (
                   <NotesCard
                     key={index}
                     id={note.id}
